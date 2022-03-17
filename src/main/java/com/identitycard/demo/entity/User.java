@@ -1,10 +1,9 @@
 package com.identitycard.demo.entity;
 
 
-
+import com.identitycard.demo.enums.Role;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "user")
@@ -14,11 +13,13 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true,
-            nullable = false, length = 8)
+    @Column(unique = true, nullable = false, length = 8)
 //    @Min(7)
     private int series;
 
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
 
     @Column(nullable = false)
     private String firstName;
@@ -91,16 +92,12 @@ public class User{
         this.placeOfBirth = placeOfBirth;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", series=" + series +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", fatherName='" + fatherName + '\'' +
-                ", placeOfBirth='" + placeOfBirth + '\'' +
-                ", userDetail=" + userDetail +
-                '}';
+    public Role getRole() {
+        return role;
     }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
 }

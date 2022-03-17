@@ -1,6 +1,8 @@
 package com.identitycard.demo.dto;
 
 
+import com.identitycard.demo.enums.Gender;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class UserDetailDTO {
     private String militaryService;
     private String bloodGroup;
     private String eyeColor;
-    private String gender;
+    private Gender gender;
     private String placeOfResidence;
     private String issuingAuthority;
     private Date issueDateCard;
@@ -74,11 +76,11 @@ public class UserDetailDTO {
         this.eyeColor = eyeColor;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

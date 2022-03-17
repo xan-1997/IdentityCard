@@ -1,5 +1,7 @@
 package com.identitycard.demo.entity;
 
+import com.identitycard.demo.enums.Gender;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -31,7 +33,8 @@ public class UserDetail {
     private String eyeColor;
 
     @Column(nullable = false)
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(nullable = false)
     private String placeOfResidence;
@@ -101,11 +104,11 @@ public class UserDetail {
         this.eyeColor = eyeColor;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
