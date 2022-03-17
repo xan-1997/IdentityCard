@@ -4,6 +4,7 @@ package com.identitycard.demo.entity;
 import com.identitycard.demo.enums.Role;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
@@ -13,9 +14,9 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false, length = 8)
-//    @Min(7)
-    private int series;
+    @Column(unique = true, nullable = false)
+    @Size(min = 8, max = 8)
+    private String series;
 
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.ORDINAL)
@@ -52,11 +53,11 @@ public class User{
         this.id = id;
     }
 
-    public int getSeries() {
+    public String getSeries() {
         return series;
     }
 
-    public void setSeries(int series) {
+    public void setSeries(String series) {
         this.series = series;
     }
 

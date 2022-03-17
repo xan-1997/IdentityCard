@@ -5,9 +5,10 @@ import com.identitycard.demo.entity.User;
 import com.identitycard.demo.service.UserDetailService;
 import com.identitycard.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,8 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDTO addUser(@RequestBody User user){
+    public UserDTO addUser(@Valid @RequestBody User user) {
+
         return userService.insert(user);
     }
 

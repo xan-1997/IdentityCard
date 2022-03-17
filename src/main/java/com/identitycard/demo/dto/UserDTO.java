@@ -5,7 +5,7 @@ import com.identitycard.demo.enums.Role;
 
 public class UserDTO {
     private Long id;
-    private int series;
+    private String series;
     private String firstName;
     private String lastName;
     private String fatherName;
@@ -13,15 +13,7 @@ public class UserDTO {
     private UserDetailDTO userDetail;
     private Role role;
 
-    public UserDTO(Long id, int series, String firstName, String lastName, String fatherName, String placeOfBirth, UserDetailDTO userDetail) {
-        this.id = id;
-        this.series = series;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.fatherName = fatherName;
-        this.placeOfBirth = placeOfBirth;
-        this.userDetail = userDetail;
-    }
+
 
     public Role getRole() {
         return role;
@@ -42,11 +34,11 @@ public class UserDTO {
         this.id = id;
     }
 
-    public int getSeries() {
+    public String getSeries() {
         return series;
     }
 
-    public void setSeries(int series) {
+    public void setSeries(String series) {
         this.series = series;
     }
 
