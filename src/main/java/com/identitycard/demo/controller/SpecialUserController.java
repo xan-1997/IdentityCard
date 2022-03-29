@@ -1,8 +1,6 @@
 package com.identitycard.demo.controller;
 
 import com.identitycard.demo.dto.UserDTO;
-import com.identitycard.demo.mapper.UserMapper;
-import com.identitycard.demo.repository.UserRepository;
 import com.identitycard.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
