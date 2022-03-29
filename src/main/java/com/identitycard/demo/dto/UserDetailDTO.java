@@ -4,11 +4,9 @@ package com.identitycard.demo.dto;
 import com.identitycard.demo.enums.Gender;
 
 import java.sql.Date;
-import java.util.List;
 
 public class UserDetailDTO {
     private Long id;
-    private Long userId;
     private String maritalStatus;
     private String militaryService;
     private String bloodGroup;
@@ -18,15 +16,7 @@ public class UserDetailDTO {
     private String issuingAuthority;
     private Date issueDateCard;
     private Date expirationDateCard;
-    private List<UserPhoneDTO> userPhone;
 
-    public List<UserPhoneDTO> getUserPhone() {
-        return userPhone;
-    }
-
-    public void setUserPhone(List<UserPhoneDTO> userPhone) {
-        this.userPhone = userPhone;
-    }
 
     public Long getId() {
         return id;
@@ -34,14 +24,6 @@ public class UserDetailDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getMaritalStatus() {

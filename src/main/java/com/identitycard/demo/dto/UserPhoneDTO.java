@@ -1,6 +1,5 @@
 package com.identitycard.demo.dto;
 
-import com.identitycard.demo.entity.UserDetail;
 
 
 public class UserPhoneDTO {

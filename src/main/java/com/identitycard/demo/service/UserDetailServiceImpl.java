@@ -1,6 +1,7 @@
 package com.identitycard.demo.service;
 
 import com.identitycard.demo.entity.UserDetail;
+import com.identitycard.demo.mapper.UserDetailMapper;
 import com.identitycard.demo.repository.UserDetailRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class UserDetailServiceImpl implements UserDetailService{
 
     private final UserDetailRepository repository;
+    private final UserDetailMapper mapper;
 
     @Override
     public UserDetail getById(Long id) {

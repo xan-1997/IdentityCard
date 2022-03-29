@@ -1,5 +1,6 @@
 package com.identitycard.demo.service;
 
+import com.identitycard.demo.dto.UserDetailDTO;
 import com.identitycard.demo.entity.UserDetail;
 
 import java.util.List;

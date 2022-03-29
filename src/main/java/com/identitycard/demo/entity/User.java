@@ -5,17 +5,19 @@ import com.identitycard.demo.enums.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
-public class User{
+@NamedEntityGraph(name = "user_graph", attributeNodes = { @NamedAttributeNode("userPhone")})
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
-    @Size(min = 8, max = 8)
+    @Size(min = 8, max = 8, message = "Length of series must be 8!!!")
     private String series;
 
     @Column(name = "role", nullable = false)
@@ -34,8 +36,20 @@ public class User{
     @Column(nullable = false)
     private String placeOfBirth;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user",optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     private UserDetail userDetail;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<UserPhone> userPhone;
+
+    public List<UserPhone> getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(List<UserPhone> userPhone) {
+        this.userPhone = userPhone;
+    }
 
     public UserDetail getUserDetail() {
         return userDetail;

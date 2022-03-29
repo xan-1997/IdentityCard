@@ -1,7 +1,6 @@
 package com.identitycard.demo.entity;
 
 import javax.persistence.*;
-//import java.util.List;
 
 @Entity
 @Table(name = "user_phone")
@@ -14,9 +13,9 @@ public class UserPhone {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @ManyToOne()
-    @JoinColumn(name = "user_detail_id", nullable = false)
-    private UserDetail userDetail;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public Long getId() {
         return id;
@@ -34,11 +33,11 @@ public class UserPhone {
         this.phoneNumber = phoneNumber;
     }
 
-    public UserDetail getUserDetail() {
-        return userDetail;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserDetail(UserDetail userDetail) {
-        this.userDetail = userDetail;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

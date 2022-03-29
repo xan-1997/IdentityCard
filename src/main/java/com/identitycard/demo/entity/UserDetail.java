@@ -1,10 +1,8 @@
 package com.identitycard.demo.entity;
 
 import com.identitycard.demo.enums.Gender;
-
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "user_detail")
@@ -13,12 +11,10 @@ public class UserDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @MapsId
+    @OneToOne
+    @JoinColumn(name="id")
     private User user;
-
-    @OneToMany(mappedBy = "userDetail", cascade = CascadeType.ALL)
-    private List<UserPhone> userPhone;
 
     @Column(nullable = false)
     private String maritalStatus;
@@ -48,12 +44,12 @@ public class UserDetail {
     @Column(nullable = false)
     private Date expirationDateCard;
 
-    public List<UserPhone> getUserPhone() {
-        return userPhone;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserPhone(List<UserPhone> userPhone) {
-        this.userPhone = userPhone;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {
@@ -62,14 +58,6 @@ public class UserDetail {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getMaritalStatus() {

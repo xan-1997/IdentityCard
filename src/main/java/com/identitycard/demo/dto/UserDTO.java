@@ -1,8 +1,13 @@
 package com.identitycard.demo.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.identitycard.demo.enums.Role;
 
+import java.util.List;
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
     private Long id;
     private String series;
@@ -12,8 +17,15 @@ public class UserDTO {
     private String placeOfBirth;
     private UserDetailDTO userDetail;
     private Role role;
+    private List<UserPhoneDTO> userPhone;
 
+    public List<UserPhoneDTO> getUserPhone() {
+        return userPhone;
+    }
 
+    public void setUserPhone(List<UserPhoneDTO> userPhone) {
+        this.userPhone = userPhone;
+    }
 
     public Role getRole() {
         return role;
