@@ -9,7 +9,6 @@ public interface UserService {
     UserDTO getById(Long id);
     UserDTO insert(User user);
     List<UserDTO> getAll();
-    UserDTO getUserInfoById(Long id);
 
     UserDTO getSpecialUser(Long id);
 }

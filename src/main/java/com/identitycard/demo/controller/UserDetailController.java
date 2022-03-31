@@ -19,7 +19,7 @@ public class UserDetailController {
 
     @GetMapping("/{id}")
     public UserDetailDTO getById(@PathVariable Long id){
-        UserDetail userDetail = userDetailService.getById(id);
-        return mapper.toUserDetailDTO(userDetail);
+        UserDetailDTO userDetail = userDetailService.getById(id);
+        return userDetail;
     }
 }

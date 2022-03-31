@@ -6,7 +6,7 @@ import com.identitycard.demo.entity.UserDetail;
 import java.util.List;
 
 public interface UserDetailService {
-    UserDetail getById(Long id);
-    UserDetail insert(UserDetail userDetail);
-    List<UserDetail> getAll();
+    UserDetailDTO getById(Long id);
+    UserDetailDTO insert(UserDetail userDetail);
+    List<UserDetailDTO> getAll();
 }

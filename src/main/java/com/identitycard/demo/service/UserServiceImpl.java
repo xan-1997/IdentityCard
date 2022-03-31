@@ -9,6 +9,8 @@ import com.identitycard.demo.mapper.UserMapper;
 import com.identitycard.demo.mapper.UserPhoneMapper;
 import com.identitycard.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,26 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
-    public UserDTO getUserInfoById(Long id) {
-        User user = repository.findById(id).orElseThrow(() -> new NullPointerException("There is no user with this id!!!"));
-        UserDTO specialUser = new UserDTO();
-
-        specialUser.setFirstName(user.getFirstName());
-        specialUser.setLastName(user.getLastName());
-
-        List<UserPhoneDTO> dtos = new ArrayList<>();
-        for(UserPhone phone: user.getUserPhone()){
-            String phoneNumber = phone.getPhoneNumber();
-            UserPhoneDTO phoneDTO = new UserPhoneDTO();
-            phoneDTO.setPhoneNumber(phoneNumber);
-            dtos.add(phoneDTO);
-        }
-        specialUser.setUserPhone(dtos);
-        return specialUser;
-    }
-
     private final UserPhoneMapper mapper2;
+
     @Override
     public UserDTO getSpecialUser(Long id) {
         UserDTO result = new UserDTO();

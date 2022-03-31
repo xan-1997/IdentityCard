@@ -1,5 +1,6 @@
 package com.identitycard.demo.service;
 
+import com.identitycard.demo.dto.UserDetailDTO;
 import com.identitycard.demo.entity.UserDetail;
 import com.identitycard.demo.mapper.UserDetailMapper;
 import com.identitycard.demo.repository.UserDetailRepository;
@@ -17,18 +18,19 @@ public class UserDetailServiceImpl implements UserDetailService{
     private final UserDetailMapper mapper;
 
     @Override
-    public UserDetail getById(Long id) {
-        Optional<UserDetail> result = repository.findById(id);
-        return result.orElseThrow(()->new NullPointerException("There is no UserDetail with this id!!!"));
+    public UserDetailDTO getById(Long id) {
+        Optional<UserDetail> userDetail = repository.findById(id);
+        UserDetail result = userDetail.orElseThrow(()->new NullPointerException("There is no UserDetail with this id!!!"));
+        return mapper.toUserDetailDTO(result);
     }
 
     @Override
-    public UserDetail insert(UserDetail userDetail) {
-        return repository.save(userDetail);
+    public UserDetailDTO insert(UserDetail userDetail) {
+        return mapper.toUserDetailDTO(repository.save(userDetail));
     }
 
     @Override
-    public List<UserDetail> getAll() {
-        return repository.findAll();
+    public List<UserDetailDTO> getAll() {
+        return mapper.toListUserDetailDTO(repository.findAll());
     }
 }
